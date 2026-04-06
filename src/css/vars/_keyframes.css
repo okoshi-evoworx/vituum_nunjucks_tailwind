@@ -1,0 +1,31 @@
+/*
+Tailwindで@keyframesを使用する場合
+animate-(<custom-property>) : animation: var(<custom-property>);
+
+https://tailwindcss.com/docs/animation
+
+@themeで設定する場合
+https://tailwindcss.com/docs/theme#defining-animation-keyframes
+*/
+:root {
+  --fade-in: fadeIn 0.3s ease forwards; /* amimate-(--fade-in) */
+  --fade-out: fadeOut 0.3s ease forwards; /* amimate-(--fade-out) */
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}

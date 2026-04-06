@@ -1,0 +1,24 @@
+{% extends '_layout/base.njk' %}
+{% block css -%}
+{%- endblock %}
+{% block js -%}
+{%- endblock %}
+{% block main -%}
+  <h1 class="font-jp font-bold text-black">{{ title }}</h1>
+  <div>
+    <pre>{{ mode }}</pre>
+    <pre>{{ page.path }}</pre>
+  </div>
+  {% if page.path === '/about/' %}<p class="text-main text-2xl font-bold">ABOUTですよ</p>{% endif %}
+  <section id="section1">
+    <h2>見出し</h2>
+    <p>内容</p>
+    <div class="c-sample bg-main">.c-sample</div>
+    <figure class="mr-auto ml-auto w-240 md:w-480">
+      <img src="/src/img/src_sample.webp" alt="" width="640" height="640" loading="lazy" />
+    </figure>
+    <figure class="mt-24 mr-auto ml-auto w-240 md:mt-48 md:w-480">
+      <img src="/img/public_sample.webp" alt="" width="640" height="640" loading="lazy" />
+    </figure>
+  </section>
+{%- endblock %}

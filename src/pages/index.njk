@@ -1,0 +1,28 @@
+{% extends '_layout/base.njk' %}
+{% block css -%}
+{%- endblock %}
+{% block js -%}
+{%- endblock %}
+{% block main -%}
+  <h1 class="font-jp font-bold text-black">INDEX</h1>
+  <div>
+    <pre>{{ mode }}</pre>
+    <pre>{{ page.path }}</pre>
+  </div>
+  <section id="section1">
+    <h2>見出し</h2>
+    <p>内容</p>
+    <div class="c-sample animate-(--fade-in) hover:animate-(--fade-out)">.c-sample</div>
+    <figure class="mr-auto ml-auto w-240 md:w-480">
+      <img src="/src/img/src_sample.webp" alt="" width="640" height="640" loading="lazy" />
+    </figure>
+    <figure class="mt-24 mr-auto ml-auto w-240 md:mt-48 md:w-480">
+      <img src="/img/public_sample.webp" alt="" width="640" height="640" loading="lazy" />
+    </figure>
+  </section>
+  <section id="section2">
+    <a class="d-btn ease-spring-heavy transition-transform duration-600 hover:translate-y-8" href="#section1">.d-btn(daisyui)</a>
+    <h2>見出し</h2>
+    <p>内容</p>
+  </section>
+{%- endblock %}

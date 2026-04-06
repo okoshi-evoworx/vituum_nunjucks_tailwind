@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+{% include "../_includes/gtag.njk" %}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{% if is_top !== "true" %}{{ title }} | {% endif %}{{ site.name }}</title>
+<meta name="description" content="{{ description }}">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:url" content="{{ site.url }}{{ page.path }}">
+<meta property="og:type" content="{% if is_top === 'true' %}website{% else %}article{% endif %}">
+<meta property="og:title" content="{% if is_top === 'true' %}{{ site.name }}{% else %}{{ title }}{% endif %}">
+<meta property="og:image" content="{{ site.url }}{{ site.root }}{% if ogimage %}{{ ogimage }}{% else %}{{ site.ogimage }}{% endif %}">
+<meta property="og:description" content="{{ description }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ site.url }}{{ site.root }}{% if twittercard %}{{ twittercard }}{% elif ogimage %}{{ ogimage }}{% else %}{{ site.ogimage }}{% endif %}">
+<link rel="canonical" href="{{ site.url }}{{ page.path }}" />
+<link rel="icon" href="{{ site.root }}favicon.ico" sizes="any">
+<link rel="icon" href="{{ site.root }}img/common/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{{ site.root }}apple-touch-icon.png" />
+
+<link rel="stylesheet" href="/src/css/styles.css">
+{% block css -%}{%- endblock -%}
+<script src="/src/js/main.js" type="module"></script>
+<script>  </script>
+{% block js -%}{%- endblock -%}
+{% if breadcrumbs or is_top === 'true' %}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": "1",
+      "name": "{{ site.name }}",
+      "item": "{{ site.url }}{{ site.root }}"
+    }{% for breadcrumb in breadcrumbs %},
+    {
+      "@type": "ListItem",
+      "position": {{ loop.index + 1 }},
+      "name": "{{ breadcrumb.name }}",
+      "item": "{{ site.url }}{{ site.root }}{{ breadcrumb.item }}"
+    }{% endfor %}
+  ]
+}
+</script>
+{% endif -%}
+{% block head -%}{%- endblock -%}
+</head>
+<body class="preload">
+{% include "../_includes/gtag_noscript.njk" %}
+{% block bodyStart -%}{%- endblock %}
+<div class="l-container">
+<a href="#main" class="skip-to-content">本文へ移動</a>
+{% include "../_includes/header.njk" %}
+<main id="main" class="l-main">
+{% block main -%}{%- endblock %}
+</main>
+{% include "../_includes/footer.njk" %}
+{% block bodyEnd -%}{%- endblock %}
+</div>
+</body>
+</html>

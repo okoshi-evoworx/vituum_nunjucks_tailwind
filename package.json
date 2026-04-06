@@ -1,0 +1,52 @@
+{
+  "name": "vituum_nunjucks_tailwind",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "concurrently 'npx biome check src/**/*' 'npx markuplint src/**/*.html' -c '#60a5fa,#663399,#1572eb'",
+    "check:js": "biome check src/**/*.js",
+    "check:css": "biome check src/**/*.css",
+    "check:html": "concurrently 'npx biome check dist/**/*.html' 'npx markuplint dist/**/*.html'",
+    "fix": "biome check --write src/**/*",
+    "fix:js": "biome check --write src/js/**/*.js",
+    "fix:css": "biome check --write src/css/**/*.css",
+    "fix:html": "biome check --write dist/**/*.html",
+    "test": "npx playwright test"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.11.1",
+    "@biomejs/biome": "2.4.9",
+    "@playwright/test": "^1.58.2",
+    "@tailwindcss/postcss": "^4.2.2",
+    "@types/node": "^25.5.0",
+    "@vituum/vite-plugin-nunjucks": "^2.0.1",
+    "browserslist": "^4.28.1",
+    "concurrently": "^9.2.1",
+    "glob": "^13.0.6",
+    "lightningcss": "^1.32.0",
+    "markuplint": "^4.14.1",
+    "postcss": "^8.5.8",
+    "postcss-cli": "^11.0.1",
+    "postcss-import": "^16.1.1",
+    "postcss-import-ext-glob": "^2.1.1",
+    "postcss-lightningcss": "^1.0.2",
+    "prettier": "^3.6.2",
+    "prettier-plugin-jinja-template": "^2.1.0",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "sharp": "^0.34.5",
+    "svgo": "^4.0.1",
+    "vite": "^8.0.3",
+    "vite-plugin-image-optimizer": "^2.0.3",
+    "vituum": "^2.0.1"
+  },
+  "dependencies": {
+    "daisyui": "^5.5.19",
+    "tailwindcss": "^4.2.2"
+  },
+  "browserslist": [
+    "baseline widely available"
+  ]
+}

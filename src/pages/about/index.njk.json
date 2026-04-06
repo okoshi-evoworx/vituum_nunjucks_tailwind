@@ -1,0 +1,10 @@
+{
+    "title": "ABOUT",
+    "description": "ABOUTのdescriptionが入ります。",
+    "breadcrumbs": [
+      {
+        "name": "ABOUT",
+        "item": "about/"
+      }
+    ]
+}
