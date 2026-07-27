@@ -1,0 +1,95 @@
+/*
+<details class="c-collapsible-panel">
+  <summary>
+    <h3>タイトル</h3>
+    <span class="icon"></span>
+  </summary>
+  <div class="wrapper">
+    <div class="body">
+      <p>内容</p>
+    </div>
+  </div>
+</details>
+*/
+
+.c-collapsible-panel {
+  summary {
+    cursor: pointer;
+    list-style: none;
+    &::marker {
+      display: none;
+      content: none;
+    }
+    &::-webkit-details-marker {
+      display: none;
+      content: none;
+    }
+    &:has(.icon) {
+      display: grid;
+      grid-template-areas: ". icon";
+      grid-template-columns: 1fr auto;
+      align-content: center;
+      align-items: center;
+    }
+  }
+
+  .icon {
+    display: grid;
+    grid-area: icon;
+    place-content: center;
+    place-items: center;
+    width: calc(32 * var(--spacing));
+    height: calc(32 * var(--spacing));
+    color: currentColor;
+    background-color: var(--color-white);
+    border-radius: 50%;
+    transition: color ease 0.3s;
+    @media (--md ) {
+      width: calc(36 * var(--spacing));
+      height: calc(36 * var(--spacing));
+    }
+
+    &::before,
+    &::after {
+      display: block;
+      grid-area: 1 / 1 / 2 / 2;
+      width: calc(9.6 * var(--spacing));
+      height: calc(1.6 * var(--spacing));
+      content: "";
+      background-color: currentColor;
+      border-radius: 100vmax;
+      transition: rotate ease 0.6s;
+      @media (--md ) {
+        width: calc(12 * var(--spacing));
+        height: calc(2 * var(--spacing));
+      }
+    }
+    &::before {
+      rotate: -90deg;
+    }
+  }
+
+  .wrapper {
+    display: grid;
+    grid-template-rows: 0fr;
+    grid-template-columns: 100%;
+    overflow: hidden;
+    transition: grid-template-rows ease 0.6s;
+  }
+
+  .body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &.is-open {
+    .wrapper {
+      grid-template-rows: 1fr;
+    }
+    .icon {
+      &::before {
+        rotate: 0deg;
+      }
+    }
+  }
+}

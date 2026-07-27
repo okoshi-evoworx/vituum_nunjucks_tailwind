@@ -1,4 +1,4 @@
-{% extends '_layout/base.njk' %}
+{% extends 'templates/layout/base.njk' %}
 {% block css -%}
 {%- endblock %}
 {% block js -%}
@@ -21,8 +21,43 @@
     </figure>
   </section>
   <section id="section2">
-    <a class="d-btn ease-spring-heavy transition-transform duration-600 hover:translate-y-8" href="#section1">.d-btn(daisyui)</a>
-    <h2>見出し</h2>
-    <p>内容</p>
+    <h2 class="text-lg font-bold">アコーディオン</h2>
+
+    <details class="c-collapsible-panel is-open" open>
+      <summary>
+        <h3>タイトル</h3>
+        <span class="icon"></span>
+      </summary>
+      <div class="wrapper">
+        <div class="body">
+          <p>内容</p>
+        </div>
+      </div>
+    </details>
+    <details class="c-collapsible-panel">
+      <summary>
+        <h3>タイトル</h3>
+        <span class="icon"></span>
+      </summary>
+      <div class="wrapper">
+        <div class="body">
+          <p>内容</p>
+        </div>
+      </div>
+    </details>
+  </section>
+  <section id="section3">
+    <h2 class="text-lg font-bold">タブ</h2>
+    <div class="c-tabs">
+      <div role="tablist" aria-label="タブの名称">
+        <button type="button" role="tab" aria-selected="true" aria-controls="a" id="tab-a" tabindex="0">タブA</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="b" id="tab-b" tabindex="-1">タブB</button>
+      </div>
+      <div>
+        <!-- [role="tablist"]の nextElementSibling として必要 -->
+        <div id="a" role="tabpanel" tabindex="0" aria-labelledby="tab-a">タブAコンテンツ</div>
+        <div id="b" role="tabpanel" tabindex="0" aria-labelledby="tab-b" hidden>タブBコンテンツ</div>
+      </div>
+    </div>
   </section>
 {%- endblock %}

@@ -1,3 +1,7 @@
+:root {
+  scrollbar-gutter: stable;
+}
+
 /* ダイアログが開いている時はスムーススクロールOFF */
 html:not(:has(dialog[open]), .dialog-open) {
   scroll-behavior: smooth;
@@ -10,9 +14,10 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.5;
-  color: var(--color-text, CanvasText);
-  background-color: var(--color-white, Canvas);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+  letter-spacing: var(--tracking-jp);
+  background-color: var(--color-white);
 }
 
 :where([id]) {

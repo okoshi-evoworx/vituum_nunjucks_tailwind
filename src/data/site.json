@@ -1,8 +1,8 @@
 {
   "site": {
-    "name": "蔦屋重三郎商店",
+    "name": "サイト名",
     "root": "/",
-    "url": "https://tsutaju.com",
-    "ogimage": "/img/share.png"
+    "url": "https://sample.com",
+    "ogimage": "img/share.png"
   }
 }

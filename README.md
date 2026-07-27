@@ -8,8 +8,6 @@
 
 * [Tailwind CSS](https://tailwindcss.com/)
 
-* [daisyUI](https://daisyui.com/)
-
 * [Custom media queries(Lightning CSS)](https://lightningcss.dev/transpilation.html#custom-media-queries)
 
 * [Biome](https://biomejs.dev/ja/)
@@ -134,8 +132,6 @@ Tailwindで設定されている`@layer theme, base, components, utilities;`に�
 
 `@import-glob`で読み込んでいるCSSでも[@apply](https://tailwindcss.com/docs/functions-and-directives#apply-directive)の利用が可能です。
 
-[daisyUI](https://daisyui.com/)を読み込んでいますが、不要な場合は`@plugin "daisyui";`を削除してください。接頭辞として`.d-`を設定しています。
-
 ```css
 @layer theme, base, components, layout, projects, utilities;
 @import "./import-glob.css";
@@ -143,9 +139,6 @@ Tailwindで設定されている`@layer theme, base, components, utilities;`に�
 @import "tailwindcss/preflight.css" layer(base);
 @import "tailwindcss/utilities.css" layer(utilities);
 @import "./base.css" layer(base);
-@plugin "daisyui" {
-  prefix: "d-";
-}
 
 @theme {
 〜

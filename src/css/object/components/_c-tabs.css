@@ -1,0 +1,59 @@
+/*
+<div class="c-tabs">
+  <div role="tablist" aria-label="タブの名称">
+    <button type="button" role="tab" aria-selected="true" aria-controls="a" id="tab-a" tabindex="0">タブA</button>
+    <button type="button" role="tab" aria-selected="false" aria-controls="b" id="tab-b" tabindex="-1">タブB</button>
+  </div>
+  <div><!-- [role="tablist"]の nextElementSibling として必要 -->
+    <div id="a" role="tabpanel" tabindex="0" aria-labelledby="tab-a">
+      タブAコンテンツ
+    </div>
+    <div id="b" role="tabpanel" tabindex="0" aria-labelledby="tab-b" hidden>
+      タブBコンテンツ
+    </div>
+  </div>
+</div>
+*/
+
+.c-tabs {
+  scroll-margin-top: var(--header-height);
+  [role="tablist"] {
+
+  }
+
+  [role="tab"] {
+    &[aria-selected="true"] {
+    }
+
+    &[aria-selected="false"] {
+    }
+  }
+
+  [role="tabpanel"] {
+    &:not([hidden]) {
+      display: block;
+      opacity: 1;
+      animation: tabShow 0.6s ease forwards;
+    }
+
+    &[hidden] {
+      display: none;
+      opacity: 0;
+    }
+  }
+}
+
+@keyframes tabShow {
+  0% {
+    display: none;
+  }
+
+  1% {
+    display: block;
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

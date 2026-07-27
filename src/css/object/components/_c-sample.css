@@ -1,13 +1,13 @@
 .c-sample {
   width: 100px;
   height: 100px;
-  background-color: var(--color-dark-gray);
-
-  @apply mt-100 mb-100 mr-auto ml-auto p-20 grid place-items-center place-content-center text-gray-100 text-2xl;
+  color: var(--color-white);
+  background-color: var(--color-text);
 }
 
 @media (--md) {
   .c-sample {
-    background-color: var(--color-amber-950);
+    width: calc(100 * var(--spacing));
+    height: calc(100 * var(--spacing));
   }
 }

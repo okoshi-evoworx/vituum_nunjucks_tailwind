@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-{% include "../_includes/gtag.njk" %}
+{% include "templates/includes/gtag.njk" %}
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>{% if is_top !== "true" %}{{ title }} | {% endif %}{{ site.name }}</title>
@@ -49,15 +49,15 @@
 {% block head -%}{%- endblock -%}
 </head>
 <body class="preload">
-{% include "../_includes/gtag_noscript.njk" %}
+{% include "templates/includes/gtag_noscript.njk" %}
 {% block bodyStart -%}{%- endblock %}
 <div class="l-container">
 <a href="#main" class="skip-to-content">本文へ移動</a>
-{% include "../_includes/header.njk" %}
+{% include "templates/includes/header.njk" %}
 <main id="main" class="l-main">
 {% block main -%}{%- endblock %}
 </main>
-{% include "../_includes/footer.njk" %}
+{% include "templates/includes/footer.njk" %}
 {% block bodyEnd -%}{%- endblock %}
 </div>
 </body>
