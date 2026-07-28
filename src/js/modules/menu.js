@@ -17,20 +17,21 @@ export default () => {
   const main = document.getElementById('main') || '';
   const footer = document.getElementById('footer') || '';
   const focusableSelector = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, [tabindex]:not([tabindex^="-"]), [contenteditable]';
+  const mql = window.matchMedia('(width < 800px)');
   let previousScrollY = 0;
 
   // ヘッダーの高さを--header-heightに格納
-  const getHeaderHeight = () => {
-    const headerResizeObserver = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.borderBoxSize) {
-          document.documentElement.style.setProperty('--header-height', `${entry.borderBoxSize[0].blockSize}px`);
-        }
-      }
-    });
-    headerResizeObserver.observe(header);
-  };
-  getHeaderHeight();
+  // const getHeaderHeight = () => {
+  //   const headerResizeObserver = new ResizeObserver((entries) => {
+  //     for (const entry of entries) {
+  //       if (entry.borderBoxSize) {
+  //         document.documentElement.style.setProperty('--header-height', `${entry.borderBoxSize[0].blockSize}px`);
+  //       }
+  //     }
+  //   });
+  //   headerResizeObserver.observe(header);
+  // };
+  // getHeaderHeight();
 
   // フォーカストラップ
   const handleKeyDown = (e) => {
@@ -89,26 +90,47 @@ export default () => {
     document.documentElement.classList.remove('dialog-open');
   };
 
-  // ハンバーガーボタンをクリック
-  trigger.addEventListener('click', () => {
+  const triggerClick = () => {
     if (trigger.getAttribute('aria-expanded') === 'true') {
       menuClose();
     } else {
       menuOpen();
     }
-  });
+  }
 
-  // メニュー内のリンクをクリックしたら閉じる
-  menu.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      menuClose();
-    });
-  });
-
-  // メニュー外をクリックしたら閉じる
-  document.addEventListener('click', (e) => {
+  const documentClick = (e) => {
     if (e.target === menu) {
-      menuClose();
+      menuClose()
     }
-  });
+  }
+
+
+  // スマホ・PC切替
+  const menuInit = (mql) => {
+    if (mql.matches) { // スマホ
+      menuClose()
+      menu.setAttribute('inert', '')
+      menu.setAttribute('role', 'dialog')
+      trigger.addEventListener('click', triggerClick)
+      menu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', menuClose)
+      })
+      document.addEventListener('click', documentClick)
+    } else { // PC
+      menuClose()
+      trigger.removeEventListener('click', triggerClick)
+      menu.querySelectorAll('a').forEach((link) => {
+        link.removeEventListener('click', menuClose)
+      })
+      menu.setAttribute('aria-hidden', 'false')
+      menu.removeAttribute('inert')
+      menu.removeAttribute('role')
+      document.removeEventListener('click', documentClick)
+    }
+  }
+  menuInit(mql);
+  mql.addEventListener('change', menuInit);
+
+
+
 };

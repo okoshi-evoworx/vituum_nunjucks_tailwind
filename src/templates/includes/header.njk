@@ -1,14 +1,14 @@
 <header id="header" class="l-header">
   <p class="sitename"><a href="/">サイト名</a></p>
-  <button type="button" id="trigger" class="l-trigger" aria-controls="menu" aria-expanded="false" aria-label="メニューを開く"><span></span></button>
-  <nav id="menu" class="l-menu" aria-hidden="true" aria-label="メニュー" inert>
-    <div role="dialog" class="contents">
+  <button type="button" id="trigger" class="l-menu-trigger" aria-controls="menu" aria-expanded="false" aria-label="メニューを開く"></button>
+  <div id="menu" class="l-menu" aria-hidden="true" role="dialog">
+    <nav class="l-menu-nav" aria-label="メニュー">
       <ul>
         <li><a href="/about/">ABOUT</a></li>
         <li><a href="#">LINK</a></li>
         <li><a href="#">LINK</a></li>
         <li><a href="#">LINK</a></li>
       </ul>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </header>

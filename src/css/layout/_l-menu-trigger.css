@@ -1,0 +1,67 @@
+.l-menu-trigger {
+  @media (--md) {
+    display: none;
+  }
+  @media (--under-md) {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    place-content: center;
+    place-items: center;
+    width: calc(40 * var(--spacing));
+    height: calc(40 * var(--spacing));
+    color: var(--color-white);
+    appearance: none;
+    cursor: pointer;
+    background-color: var(--color-orange);
+    border-radius: calc(4 * var(--spacing));
+
+    &::before,
+    &::after {
+      display: block;
+      grid-row: 1 / -1;
+      grid-column: 1 / -1;
+      width: calc(16 * var(--spacing));
+      height: calc(2 * var(--spacing));
+      content: "";
+      background-color: currentcolor;
+
+      /* 回転が先、移動が後 */
+      transition:
+        translate var(--sumakouza-duration) var(--sumakouza-easing) var(--sumakouza-duration),
+        opacity var(--sumakouza-duration) var(--sumakouza-easing),
+        rotate var(--sumakouza-duration) var(--sumakouza-easing);
+    }
+
+    &::before {
+      translate: 0 calc(-3 * var(--spacing));
+    }
+
+    &::after {
+      translate: 0 calc(3 * var(--spacing));
+    }
+
+    &[aria-expanded="true"] {
+      &::before,
+      &::after {
+        /* 移動が先、回転が後 */
+        transition:
+          translate var(--sumakouza-duration) var(--sumakouza-easing),
+          opacity var(--sumakouza-duration) var(--sumakouza-easing) var(--sumakouza-duration),
+          rotate var(--sumakouza-duration) var(--sumakouza-easing) var(--sumakouza-duration);
+      }
+
+      &::before {
+        rotate: 45deg;
+        translate: 0 0;
+      }
+
+      &::after {
+        rotate: -45deg;
+        translate: 0 0;
+      }
+    }
+  }
+}

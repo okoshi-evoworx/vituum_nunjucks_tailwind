@@ -8,16 +8,17 @@
   left: 0;
   z-index: var(--z-header);
   display: grid;
-  grid-template-columns: 1fr 48px;
-  gap: 8px;
+  grid-template-columns: 1fr calc(40 * var(--spacing));
+  gap: calc(8 * var(--spacing));
   align-items: center;
   width: 100%;
   padding: 16px;
   color: var(--color-white);
   background-color: var(--color-text);
+  @media (--md) {
+    grid-template-columns: auto 1fr;
+  }
   .sitename a {
     color: var(--color-white);
-    @apply hover:no-underline;
   }
 }
-

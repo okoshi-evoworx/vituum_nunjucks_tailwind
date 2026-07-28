@@ -1,0 +1,36 @@
+.l-menu-nav {
+  @media (--under-md) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-top: calc(64 * var(--spacing));
+    padding-right: calc(20 * var(--spacing));
+    padding-left: calc(20 * var(--spacing));
+    margin-left: auto;
+    overflow-y: auto;
+    color: var(--color-text);
+    background-color: var(--color-silver);
+
+    /* スクロール用スペーサー */
+    &::after {
+      display: block;
+      width: 100%;
+      height: calc(102 * var(--spacing));
+      pointer-events: none;
+      content: "";
+    }
+  }
+
+  @media (--md) {
+    margin-left: auto;
+  }
+
+  ul {
+    display: flex;
+    gap: calc(8 * var(--spacing));
+    align-content: center;
+    @media (--under-md) {
+      flex-direction: column;
+    }
+  }
+}
